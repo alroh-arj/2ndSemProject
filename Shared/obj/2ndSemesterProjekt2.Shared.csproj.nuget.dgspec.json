@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/lasse/Code/2ndSemesterProjekt2/Shared/2ndSemesterProjekt2.Shared.csproj": {}
+  },
+  "projects": {
+    "/home/lasse/Code/2ndSemesterProjekt2/Shared/2ndSemesterProjekt2.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/lasse/Code/2ndSemesterProjekt2/Shared/2ndSemesterProjekt2.Shared.csproj",
+        "projectName": "2ndSemesterProjekt2.Shared",
+        "projectPath": "/home/lasse/Code/2ndSemesterProjekt2/Shared/2ndSemesterProjekt2.Shared.csproj",
+        "packagesPath": "/home/lasse/.nuget/packages/",
+        "outputPath": "/home/lasse/Code/2ndSemesterProjekt2/Shared/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/lasse/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
