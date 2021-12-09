@@ -1,6 +1,11 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using New2ndSemester.Shared
+@using New2ndSemester.Client.Services
+@inject ILocalStorageService _localStorageService
+@inject NavigationManager _navigationManager
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">2ndSemesterProjekt2</a>
+        <a class="navbar-brand" href="">Frivillig Bookingsystem</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,31 +14,78 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
+        @if (_user == null)
+        {
+            <div class="nav-item">
+                <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                    <span class="oi oi-account-login" aria-hidden="true"></span> Log ind
+                </NavLink>
+            </div>
+            <div class="nav-item">
+                <NavLink class="nav-link" href="register">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Opret bruger
+                </NavLink>
+            </div>
+        }
+        else
+        {
+            <div class="nav-item">
+                <NavLink class="nav-link" href="Home" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Oversigt
+                </NavLink>
+            </div>
+            <div class="nav-item">
+                <NavLink class="nav-link" href="counter">
+                    <span class="oi oi-calendar" aria-hidden="true"></span> Vagter
+                </NavLink>
+            </div>
+            <div class="nav-item">
+                <NavLink class="nav-link" href="fetchdata">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                </NavLink>
+            </div>
+            <div class="nav-item">
+                <NavLink class="nav-link" @onclick="LogOut">
+                    <span class="oi oi-account-logout" aria-hidden="true"></span> Log ud
+                </NavLink>
+            </div>
+        }
     </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
+    private User? _user;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async void LogOut()
+    {
+        await _localStorageService.RemoveItem("user");
+        StateHasChanged();
+        _navigationManager.NavigateTo("/");
+    }
+
+    protected override async void OnInitialized()
+    {
+        base.OnInitialized();
+        _navigationManager.LocationChanged += LocationChanged;
+        UpdateSidebar();
+    }
+
+    private async void UpdateSidebar()
+    {
+        _user = await _localStorageService.GetItem<User>("user");
+        StateHasChanged();
+    }
+    
+    void LocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        UpdateSidebar();
     }
 }

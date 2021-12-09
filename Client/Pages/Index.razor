@@ -1,9 +1,68 @@
 ﻿@page "/"
+@using New2ndSemester.Shared
+@using New2ndSemester.Client.Services
+@inject HttpClient _http
+@inject NavigationManager _navigationManager
+@inject ILocalStorageService _localStorageService
 
-<PageTitle>Index</PageTitle>
+@* @inject NavigationManager NavigationManager *@
 
-<h1>Hello, world!</h1>
+<PageTitle>Login</PageTitle>
 
-Welcome to your new app.
+<div class="col-6 w-100">
+    <div class="d-flex align-items-center justify-content-center" style="height: 80vh;">
+        <div class="text-center" style="width: 250px;">
+            <h1 class="mb-4 oi oi-globe" style="font-size: 6rem; color: #a9adb9;" aria-hidden="true"></h1>
+            @* <img class="" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> *@
+            <h1 class="h3 mb-3 font-weight-normal">Log ind</h1>
+            <input @bind="_username" type="text" class="form-control mb-2" placeholder="Brugernavn" required autofocus>
+            <input @bind="_password" type="password" class="form-control mb-3" placeholder="Kodeord" required>
+            <button class="btn btn-primary btn-block" @onclick="LogIn">Log på</button>
+            <p>@_errorText</p>
+        </div>
+    </div>
+</div>
+@code {
+    private User? _user;
+    private string _username = "";
+    private string _password = "";
+    private string _errorText = "";
+   
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        if (firstRender == true)
+        {
+            var user = await _localStorageService.GetItem<User?>("user");
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+            if (user != null)
+            {
+                _navigationManager.NavigateTo("/Home");
+            }
+        }
+    }
+
+    private async void LogIn()
+    {
+        var registerUser = new User
+        {
+            username = _username,
+            password = _password,
+        };
+        
+        var response = await _http.PostAsJsonAsync("api/user/login", registerUser);
+
+        if (response.IsSuccessStatusCode)
+        {
+            _user = await response.Content.ReadFromJsonAsync<User>();
+            await _localStorageService.SetItem<User>("user", _user);
+            StateHasChanged();
+            _navigationManager.NavigateTo("/Home");
+        }
+        else
+        {
+            // NavigationManager.NavigateTo("/");
+            _errorText = await response.Content.ReadAsStringAsync();
+            StateHasChanged();
+        }
+    }
+}

@@ -3,17 +3,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:2931",
-      "sslPort": 44376
+      "applicationUrl": "http://localhost:11595",
+      "sslPort": 44337
     }
   },
   "profiles": {
-    "2ndSemesterProjekt2": {
+    "New2ndSemester": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "applicationUrl": "https://localhost:7235;http://localhost:5111",
+      "applicationUrl": "https://localhost:7066;http://localhost:5064",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -22,17 +22,6 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "hotReload": {
-      "commandName": "Executable",
-      "executablePath": "dotnet",
-      "workingDirectory": "$(ProjectDir)",
-      "commandLineArgs": "watch run",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

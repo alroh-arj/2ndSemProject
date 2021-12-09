@@ -1,4 +1,4 @@
-namespace _2ndSemesterProjekt2.Shared;
+namespace New2ndSemester.Shared;
 
 public class WeatherForecast
 {
