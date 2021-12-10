@@ -1,6 +1,7 @@
 using Microsoft.JSInterop;
 using System.Text.Json;
 using System.Threading.Tasks;
+using New2ndSemester.Shared;
 
 namespace New2ndSemester.Client.Services;
 public interface ILocalStorageService
@@ -13,7 +14,6 @@ public interface ILocalStorageService
 public class LocalStorageService : ILocalStorageService
 {
     private IJSRuntime _jsRuntime;
-
     public LocalStorageService(IJSRuntime jsRuntime)
     {
         _jsRuntime = jsRuntime;

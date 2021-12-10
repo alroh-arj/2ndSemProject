@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/lasse/Code/New2ndSemester/Shared/New2ndSemester.Shared.csproj",
+      "projectUniqueName": "/home/lasse/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
       "projectName": "New2ndSemester.Shared",
-      "projectPath": "/home/lasse/Code/New2ndSemester/Shared/New2ndSemester.Shared.csproj",
+      "projectPath": "/home/lasse/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
       "packagesPath": "/home/lasse/.nuget/packages/",
-      "outputPath": "/home/lasse/Code/New2ndSemester/Shared/obj/",
+      "outputPath": "/home/lasse/Code/2ndSemProject/Shared/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/lasse/.nuget/NuGet/NuGet.Config"

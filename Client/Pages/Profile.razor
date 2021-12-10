@@ -1,0 +1,119 @@
+@page "/{user_id:int}/profile"
+@using New2ndSemester.Shared
+@using New2ndSemester.Client.Services
+@inject HttpClient _http
+@inject IUserService _userService
+@inject NavigationManager _navigationManager
+
+@if (_user != null)
+{
+    <PageTitle>@_user.full_name's profil</PageTitle>
+    <h1>@_user.full_name</h1>
+    <div class="mb-2">
+        <p>
+            @foreach (var role in _userRoles)
+            {
+                <span class="me-2 badge rounded-pill bg-primary">@role.name</span>
+            }
+        </p>
+    </div>
+    @if (_user.id == _sessionUser.id || _sessionUserIsAdmin)
+    {
+        <div class="mb-3">
+            <div class="mb-3">
+                <label class="form-label">Brugernavn</label>
+                <input @bind="_user.username" type="text" class="form-control" autofocus>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fulde navn</label>
+                <input @bind="_user.full_name" type="text" class="form-control mb-2">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Kompetencer</label>
+                <textarea @bind="_user.description" class="form-control mb-2" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary btn-block" @onclick="UpdateUser">Opdater</button>
+        </div>
+        <hr />
+        <div class="mb-3">
+            <button class="btn btn-danger btn-block mb-1" @onclick="DeleteUser">Slet profil</button>
+            <div class="mb-3 form-check">
+                <input @bind="_understand_profile_deletion" type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Jeg forstår at denne handling er permanent</label>
+            </div>
+        </div>
+        <p>@_errorText</p>
+    }
+    else
+    {
+        <h7>Brugernavn</h7>
+        <p>@_user.username</p>
+        <h7>Fulde navn</h7>
+        <p>@_user.full_name</p>
+    }
+}
+else
+{
+    <p>Loading...</p>
+}
+
+<style>
+    
+    
+    
+</style>
+
+@code {
+    [Parameter] public int user_id { get; set; }
+    
+    private User? _sessionUser;
+
+    private User? _user;
+    private Role[] _userRoles;
+    private bool _sessionUserIsAdmin;
+    
+    private bool _understand_profile_deletion = false;
+    private string _errorText = "";
+    
+    protected override async void OnInitialized()
+    {
+        _user = await _userService.GetUser(user_id);
+        _userRoles = await _userService.GetUserRoles(user_id);
+        
+        _sessionUserIsAdmin = await _userService.SessionUserHasRole("Admin");
+        _sessionUser = await _userService.GetSessionUser();
+
+        
+        StateHasChanged();
+    }
+
+    private async void UpdateUser()
+    {
+        try {
+            await _userService.UpdateUser(_user);
+            // _navigationManager.NavigateTo("/");
+        }
+        catch (Exception e)
+        {
+            _errorText = e.Message;
+            StateHasChanged();
+        }
+    }
+    
+    private async void DeleteUser()
+    {
+        if (_understand_profile_deletion)
+        {
+            try {
+                await _userService.DeleteUser(user_id);
+                _navigationManager.NavigateTo("/");
+            }
+            catch (Exception e)
+            {
+                _errorText = e.Message;
+                StateHasChanged();
+            }
+        }
+    }
+
+}

@@ -1,0 +1,48 @@
+﻿@page "/coworkers"
+@using New2ndSemester.Shared
+@using New2ndSemester.Client.Services
+@inject IUserService _userService
+@inject HttpClient _http
+
+<PageTitle>Alle medarbejdere</PageTitle>
+
+<h1>Alle medarbejdere</h1>
+
+@if (_users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Bruger ID</th>
+                <th>Brugernavn</th>
+                <th>Fulde navn</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in _users)
+            {
+                <tr>
+                    <td>@user.id</td>
+                    <td>@user.username</td>
+                    <td>@user.full_name</td>
+                    <td><a href=@("/"+user.id+"/profile")>link</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private User[]? _users;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _users = await _http.GetFromJsonAsync<User[]>("api/user/all") ?? new User []{};;
+    }
+}

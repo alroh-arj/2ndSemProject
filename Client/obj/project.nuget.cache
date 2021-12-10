@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gknl9tMr2nnDrR8gArJ0gsScMRIjsJhKQDlNfI8QHol0xjdC8xnXYQhLIPfnSloJzK1x9jQZ0DIsdgOtivGbtA==",
+  "dgSpecHash": "AWqPHM6G+YgOxPdf58kzoejv4c66NxHCWsDIMCp/KfjwSByR72tkoIN0x89Y+fy34P9mLgeDapENuSq3xiEfMw==",
   "success": true,
-  "projectFilePath": "/home/lasse/Code/New2ndSemester/Client/New2ndSemester.Client.csproj",
+  "projectFilePath": "/home/lasse/Code/2ndSemProject/Client/New2ndSemester.Client.csproj",
   "expectedPackageFiles": [
     "/home/lasse/.nuget/packages/microsoft.aspnetcore.authorization/6.0.0/microsoft.aspnetcore.authorization.6.0.0.nupkg.sha512",
     "/home/lasse/.nuget/packages/microsoft.aspnetcore.components/6.0.0/microsoft.aspnetcore.components.6.0.0.nupkg.sha512",

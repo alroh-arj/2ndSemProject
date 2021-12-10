@@ -3,7 +3,7 @@
 @using New2ndSemester.Client.Services
 @inject HttpClient _http
 @inject NavigationManager _navigationManager
-@inject ILocalStorageService _localStorageService
+@inject IUserService _userService
 
 @* @inject NavigationManager NavigationManager *@
 
@@ -14,7 +14,8 @@
         <div class="text-center" style="width: 250px">
             <h1 class="mb-4 oi oi-globe" style="font-size: 6rem; color: #a9adb9;" aria-hidden="true"></h1>
             <h1 class="h3 mb-3 font-weight-normal">Opret ny bruger</h1>
-            <input @bind="_username" type="text" class="form-control mb-2" placeholder="Brugernavn" required autofocus>
+            <input @bind="_username" type="text" class="form-control mb-3" placeholder="Brugernavn" required autofocus>
+            <input @bind="_full_name" type="text" class="form-control mb-3" placeholder="Fulde navn" required>
             <input @bind="_password" type="password" class="form-control mb-2" placeholder="Kodeord" required>
             <input @bind="_password2" type="password" class="form-control mb-3" placeholder="Gentag kodeord" required>
             <button class="btn btn-primary btn-block" @onclick="RegisterUser">Opret</button>
@@ -25,6 +26,7 @@
 @code {
     private User? _user;
     private string _username = "";
+    private string _full_name = "";
     private string _password = "";
     private string _password2 = "";
     private string _errorText = "";
@@ -33,11 +35,11 @@
     {
         if (firstRender == true)
         {
-            var user = await _localStorageService.GetItem<User?>("user");
+            var user = await _userService.GetSessionUser();
 
             if (user != null)
             {
-                _navigationManager.NavigateTo("/Home");
+                _navigationManager.NavigateTo("/home");
             }
         }
     }
@@ -54,6 +56,7 @@
         {
             username = _username,
             password = _password,
+            full_name = _full_name,
         };
         
         var response = await _http.PostAsJsonAsync("api/user/register", registerUser);
@@ -62,8 +65,8 @@
         if (response.IsSuccessStatusCode)
         {
             _user = await response.Content.ReadFromJsonAsync<User>();
-            await _localStorageService.SetItem<User>("user", _user);
-            _navigationManager.NavigateTo("/Home");
+            await _userService.SetSessionUser(_user);
+            _navigationManager.NavigateTo("/"+_user.username+"/home");
         }
         else
         {

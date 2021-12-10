@@ -1,0 +1,26 @@
+﻿@page "/{user_id:int}/shifts"
+@using New2ndSemester.Shared
+@inject HttpClient _http
+
+<PageTitle>Counter</PageTitle>
+
+@if (_user != null)
+{
+    <h1>@(_user.full_name ?? _user.username)'s vagter</h1>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+    [Parameter] public int user_id { get; set; }
+    
+    private User? _user;
+
+    protected override async void OnInitialized()
+    {
+        _user = await _http.GetFromJsonAsync<User>("api/user/" + user_id);
+        StateHasChanged();
+    }
+}

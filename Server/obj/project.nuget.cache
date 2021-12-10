@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7PCzWlwgg0dfLyjQOYgouSlAdtQ8bYnatLDpsi22uPfwswPbsNBnaN7+bIqk0NoYxlY8KGp4L1qQ5s0TwLO53w==",
+  "dgSpecHash": "Prb8IFiXJDO0bhubdaUVIjuZ1VP/7vLZzPwlNpVAt7PjEP7bvn/DQ6pncUxZWh2KtSROLVXVQOMIQfQXtB9ABA==",
   "success": true,
-  "projectFilePath": "/home/lasse/Code/New2ndSemester/Server/New2ndSemester.Server.csproj",
+  "projectFilePath": "/home/lasse/Code/2ndSemProject/Server/New2ndSemester.Server.csproj",
   "expectedPackageFiles": [
     "/home/lasse/.nuget/packages/bcrypt.net-next/4.0.2/bcrypt.net-next.4.0.2.nupkg.sha512",
     "/home/lasse/.nuget/packages/microsoft.aspnetcore.authorization/6.0.0/microsoft.aspnetcore.authorization.6.0.0.nupkg.sha512",
