@@ -197,15 +197,15 @@
       "mscorlib.dll": "sha256-tlYWYAypJO+6gsCjV734iAJn8xcZYhUjM7vgxDLJluE=",
       "netstandard.dll": "sha256-E48Na3ZQWKExltzTwgP0Ao+UqWhiVYeerXfUL9lEc+c=",
       "System.Private.CoreLib.dll": "sha256-J85Z1XnwapHef31sR58JFq+0HrFP5BjOoObPKjdFHCw=",
-      "New2ndSemester.Shared.dll": "sha256-NCnFlnjF9KkiFIlhXODFAJTxvSEcUxsfe6UGbnspBhE=",
-      "New2ndSemester.Client.dll": "sha256-2MwYCUmHbLi7Id6Gd3Yn1JtYFtTR\/ZM\/b8o9GW0rMis="
+      "New2ndSemester.Shared.dll": "sha256-3xSaN9Vvc39GdgMTYMd2EydUBTPB7O68OxAOOnnb310=",
+      "New2ndSemester.Client.dll": "sha256-AAiCe15Nm8HWzrw2Vl\/ZR0\/yXOU1cmXaH0ATnyLYu68="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "New2ndSemester.Shared.pdb": "sha256-NKU1BzomdCy+sCeEIYL2Wjz\/hoq7eBlbaFNKj9W5zYE=",
-      "New2ndSemester.Client.pdb": "sha256-gLOWMTZy4iveMLGxyY2+27xUygpBZKelAzPCtDR3MBQ="
+      "New2ndSemester.Shared.pdb": "sha256-+X1j7zhHAD+eVALZsjGFcVI8uZU3kQgw8o+3fZcyur4=",
+      "New2ndSemester.Client.pdb": "sha256-7yNOEzRFPQheb4O2NSGh08RKsDF\/o8\/newerz2lWc5o="
     },
     "runtime": {
       "dotnet.6.0.0.lxsuqlswb6.js": "sha256-LOq52qjRa3+zt3w4UL10rS3UdwHxVQxW0JAsMPO9QAM=",

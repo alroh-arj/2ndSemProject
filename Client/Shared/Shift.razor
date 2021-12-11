@@ -1,0 +1,64 @@
+@using New2ndSemester.Shared
+@using New2ndSemester.Client.Services
+@inject IShiftService _shiftService
+@inject HttpClient _http
+
+<div class="card" style="width: 24rem;">
+    <div class="card-body">
+        <h5 class="card-title">@eshift.shift.title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@eshift.location.name, @eshift.shift.start.ToString("d", Culture)</h6>
+        <p class="card-text">@eshift.shift.description</p>
+        <hr />
+        <div class="d-flex justify-content-between text-muted">
+            <div class="d-flex justify-content-start align-items-center flex-grow-1 text-muted">
+                <div>
+                    <div>@eshift.shift.start.ToString("t", Culture)</div>
+                </div>
+                <div class="px-3">
+                    <span class="oi oi-arrow-right"></span>
+                </div>
+                <div>
+                    <div>@eshift.shift.stop.ToString("t", Culture)</div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                @if (buttonType == "assign")
+                {
+                    <button class="btn btn-success"
+                            disabled=@(eshift.assigned_volunteers.Length >= eshift.shift.required_volunteers)
+                            onclick="@Assign">
+                        Tilmeld
+                    </button>
+                }
+                else if (buttonType == "unassign")
+                {
+                    <button class="btn btn-danger"
+                            disabled=@((DateTime.Now - eshift.shift.start).TotalDays > 2)
+                            onclick="@Unassign">
+                        Afmeld
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public ExtendedShift eshift { get; set; }
+    [Parameter] public int user_id { get; set; }
+    [Parameter] public string? buttonType { get; set; }
+    [Parameter] public Action ButtonPressed { get; set; }
+
+    public static readonly System.Globalization.CultureInfo Culture = new ("da-DK");
+
+    public async void Assign()
+    {
+        await _shiftService.Assign(user_id, eshift.shift.id);
+        ButtonPressed();
+    }
+    public async void Unassign()
+    {
+        await _shiftService.Unassign(user_id, eshift.shift.id);
+        ButtonPressed();
+    }
+}

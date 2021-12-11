@@ -17,7 +17,7 @@
             }
         </p>
     </div>
-    @if (_user.id == _sessionUser.id || _sessionUserIsAdmin)
+    @if (_canEdit)
     {
         <div class="mb-3">
             <div class="mb-3">
@@ -70,7 +70,7 @@ else
 
     private User? _user;
     private Role[] _userRoles;
-    private bool _sessionUserIsAdmin;
+    private bool _canEdit;
     
     private bool _understand_profile_deletion = false;
     private string _errorText = "";
@@ -79,9 +79,10 @@ else
     {
         _user = await _userService.GetUser(user_id);
         _userRoles = await _userService.GetUserRoles(user_id);
-        
-        _sessionUserIsAdmin = await _userService.SessionUserHasRole("Admin");
         _sessionUser = await _userService.GetSessionUser();
+        
+        _canEdit = await _userService.SessionUserHasRole("Admin") ||
+                     _sessionUser.id == user_id;
 
         
         StateHasChanged();

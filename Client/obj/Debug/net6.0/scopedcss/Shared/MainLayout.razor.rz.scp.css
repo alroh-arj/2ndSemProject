@@ -51,7 +51,7 @@ main[b-ktk32dqewf] {
 
 @media (min-width: 641px) {
     .page[b-ktk32dqewf] {
-        /*flex-direction: row;*/
+        flex-direction: row;
     }
 
     .sidebar[b-ktk32dqewf] {

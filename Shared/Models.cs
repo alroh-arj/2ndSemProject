@@ -20,3 +20,37 @@ public class UserRole
     public int user_id { get; set; }
     public int role_id { get; set; }
 }
+
+public class Shift
+{
+    public int id { get; set; }
+    public string title { get; set; }
+    public string? description { get; set; }
+    public int location_id { get; set; }
+    public DateTime start { get; set; }
+    public DateTime stop { get; set; }
+    public int required_volunteers { get; set; }
+}
+
+public class ExtendedShift
+{
+    public Shift shift { get; set; }
+    public Location location { get; set; }
+    public User[] assigned_volunteers { get; set; }
+}
+
+public class UserShift
+{
+    public int id { get; set; }
+    public int user_id { get; set; }
+    public int shift_id { get; set; }
+}
+
+public class Location
+{
+    public int id { get; set; }
+    public string name { get; set; }
+    public string? description { get; set; }
+    public double x { get; set; }
+    public double y { get; set; }
+}

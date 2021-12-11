@@ -17,20 +17,20 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Bruger ID</th>
                 <th>Brugernavn</th>
                 <th>Fulde navn</th>
-                <th>Link</th>
+                <th>Profil</th>
+                <th>Vagter</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var user in _users)
             {
                 <tr>
-                    <td>@user.id</td>
                     <td>@user.username</td>
                     <td>@user.full_name</td>
                     <td><a href=@("/"+user.id+"/profile")>link</a></td>
+                    <td><a href=@("/"+user.id+"/shifts")>link</a></td>
                 </tr>
             }
         </tbody>

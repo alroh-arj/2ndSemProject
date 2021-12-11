@@ -1,12 +1,46 @@
 ﻿@page "/{user_id:int}/shifts"
 @using New2ndSemester.Shared
+@using New2ndSemester.Client.Services
 @inject HttpClient _http
+@inject NavigationManager _navigationManager
+@inject IUserService _userService
+@inject IShiftService _shiftService
 
-<PageTitle>Counter</PageTitle>
 
 @if (_user != null)
 {
-    <h1>@(_user.full_name ?? _user.username)'s vagter</h1>
+    <PageTitle>@_user.full_name's vagtoversigt</PageTitle>
+    <h1>@_user.full_name's vagtoversigt</h1>
+    <p>Her kan du se alle vagter som kan tilmeldes</p>
+    <hr />
+    <p>
+        @if (_userShifts.Count > 0)
+        {
+            <h3 class="mb-3">@_user.full_name's vagter</h3>
+            <div class="row row-cols-auto">
+                @foreach (var eshift in _userShifts)
+                {
+                    <div class="col">
+                        <Shift user_id="user_id" buttonType=@(_canUnassign ? "assign" : null) eshift="eshift" ButtonPressed="@UpdateShifts"/>
+                    </div>
+                }
+            </div>
+        }
+    </p>
+    <p>
+        @if (_availableShifts.Count > 0)
+        {
+            <h3 class="mb-3">Tilgængelige vagter</h3>
+            <div class="row row-cols-auto">
+                @foreach (var eshift in _availableShifts)
+                {
+                    <div class="col">
+                        <Shift user_id="user_id" buttonType=@(_canAssign ? "assign" : null) eshift="eshift" ButtonPressed="@UpdateShifts"/>
+                    </div>
+                }
+            </div>
+        }
+    </p>
 }
 else
 {
@@ -17,10 +51,47 @@ else
     [Parameter] public int user_id { get; set; }
     
     private User? _user;
+    private User? _sessionUser;
+
+    private bool _canAssign;
+    private bool _canUnassign;
+    
+    private List<ExtendedShift> _userShifts = new ();
+    private List<ExtendedShift> _availableShifts = new ();
+    
 
     protected override async void OnInitialized()
     {
-        _user = await _http.GetFromJsonAsync<User>("api/user/" + user_id);
+        _user = await _userService.GetUser(user_id);
+        _sessionUser = await _userService.GetSessionUser();
+
+        _canAssign = await _userService.SessionUserHasRole("Admin") || _sessionUser.id == user_id;
+        
+        _canUnassign = await _userService.SessionUserHasRole("Admin") ||
+                       await _userService.SessionUserHasRole("Frivilligkoordinator") ||
+                       _sessionUser.id == user_id;
+        
+        StateHasChanged();
+
+        UpdateShifts();
+    }
+
+    private async void UpdateShifts()
+    {
+        _userShifts.RemoveAll(_ => true);
+        _availableShifts.RemoveAll(_ => true);
+        
+        var eshifts = await _shiftService.GetAllShifts();
+        
+        foreach (var eshift in eshifts)
+        {
+            var userIds = eshift.assigned_volunteers.Select(user => user.id);
+            if (userIds.Contains(user_id))
+                _userShifts.Add(eshift);
+            else
+                _availableShifts.Add(eshift);
+        }
+        
         StateHasChanged();
     }
 }

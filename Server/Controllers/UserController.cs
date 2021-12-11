@@ -60,7 +60,7 @@ public class UserController : ControllerBase
         return Ok(registerUser);
     }
     [HttpDelete("{user_id:int}")]
-    public ActionResult<User> Register(int user_id)
+    public ActionResult<User> Delete(int user_id)
     {
         // check database for user
         var query = from user in _db.users

@@ -10,14 +10,17 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IShiftService, ShiftService>();
 
 var app = builder.Build();
-
-var localModelService = app.Services.GetRequiredService<IUserService>();
 
 var localStorageService = app.Services.GetRequiredService<ILocalStorageService>();
 var http = app.Services.GetRequiredService<HttpClient>();
 
-localModelService.Initialize(localStorageService, http);
+var userService = app.Services.GetRequiredService<IUserService>();
+var shiftService = app.Services.GetRequiredService<IShiftService>();
+
+userService.Initialize(localStorageService, http);
+shiftService.Initialize(localStorageService, http);
 
 await app.RunAsync();
