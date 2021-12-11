@@ -48,11 +48,13 @@ public class UserController : ControllerBase
             where user.username == registerUser.username
             select user;
 
-
         if (query.FirstOrDefault<User>() != null)
             return BadRequest("Brugernavnet er optaget");
         
-        _db.users.Add(registerUser);
+        registerUser = _db.users.Add(registerUser).Entity;
+        _db.SaveChanges();
+
+        _db.user_roles.Add(new UserRole{user_id = registerUser.id, role_id = 9});
         _db.SaveChanges();
         
         registerUser.password = "";
@@ -145,4 +147,31 @@ public class UserController : ControllerBase
 
         return query.ToArray();
     }
+    
+    
+    [HttpPost("{user_id:int}/roles")]
+    public ActionResult AddRole(int user_id, int role_id)
+    {
+        _db.user_roles.Add(new UserRole
+        {
+            role_id = role_id,
+            user_id = user_id
+        });
+        
+        _db.SaveChanges();
+
+        return Ok();
+    }
+    
+    [HttpDelete("{user_id:int}/roles/{role_id:int}")]
+    public ActionResult DeleteRole(int user_id, int role_id)
+    {
+        _db.user_roles.Remove(
+            _db.user_roles.First(ur => ur.role_id == role_id && ur.user_id == user_id)
+        );
+        _db.SaveChanges();
+
+        return Ok();
+    }
+
 }

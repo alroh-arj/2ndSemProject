@@ -31,7 +31,7 @@ public class ShiftController : Controller
                 ).First(),
                 assigned_volunteers = (
                     from user_shift in _db.user_shifts
-                    join user in _db.users on user_shift.shift_id equals shift.id
+                    join user in _db.users on user_shift.user_id equals user.id
                     where user_shift.shift_id == shift.id
                     select user
                     // from user_shift in _db.user_shifts

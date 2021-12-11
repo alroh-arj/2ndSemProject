@@ -14,7 +14,7 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <nav class="flex-column">
-        @if (_user == null)
+        @if (_sessionUser == null)
         {
             <div class="nav-item">
                 <NavLink class="nav-link" href="login" Match="NavLinkMatch.All">
@@ -29,23 +29,26 @@
         }
         else
         {
-            @*<div class="nav-item">
-                <NavLink class="nav-link" href=@("/"+_user.id+"/home") Match="NavLinkMatch.All">
-                    <span class="oi oi-home" aria-hidden="true"></span> Din oversigt
-                </NavLink>
-            </div*@
             <div class="nav-item">
-                <NavLink class="nav-link" href=@("/"+_user.id+"/shifts")>
+                <NavLink class="nav-link" href=@("/"+_sessionUser.id+"/shifts")>
                     <span class="oi oi-calendar" aria-hidden="true"></span> Din vagtoversigt
                 </NavLink>
             </div>
+            @if (_canAdministrateShifts)
+            {
+                <div class="nav-item">
+                    <NavLink class="nav-link" href=@("/administrate_shifts")>
+                        <span class="oi oi-wrench" aria-hidden="true"></span> Administrer vagter
+                    </NavLink>
+                </div>
+            }
             <div class="nav-item">
                 <NavLink class="nav-link" href="coworkers">
                     <span class="oi oi-people" aria-hidden="true"></span> Medarbejdere
                 </NavLink>
             </div>
             <div class="nav-item">
-                <NavLink class="nav-link" href=@("/"+_user.id+"/profile")>
+                <NavLink class="nav-link" href=@("/"+_sessionUser.id+"/profile")>
                     <span class="oi oi-person" aria-hidden="true"></span> Din profil
                 </NavLink>
             </div>
@@ -60,7 +63,8 @@
 
 @code {
     private bool collapseNavMenu = true;
-    private User? _user;
+    private User? _sessionUser;
+    private bool _canAdministrateShifts;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
@@ -85,7 +89,12 @@
 
     private async void UpdateSidebar()
     {
-        _user = await _userService.GetSessionUser();
+        _sessionUser = await _userService.GetSessionUser();
+        if (_sessionUser != null)
+        {
+            _canAdministrateShifts = await _userService.SessionUserHasRole("Admin") ||
+                                await _userService.SessionUserHasRole("Frivilligkoordinator");
+        }
         StateHasChanged();
     }
     

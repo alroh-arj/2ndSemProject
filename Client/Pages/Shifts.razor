@@ -21,7 +21,7 @@
                 @foreach (var eshift in _userShifts)
                 {
                     <div class="col">
-                        <Shift user_id="user_id" buttonType=@(_canUnassign ? "assign" : null) eshift="eshift" ButtonPressed="@UpdateShifts"/>
+                        <ShiftCard user_id="user_id" buttonType=@(_canUnassign ? "unassign" : null) eshift="eshift" ButtonPressed="@UpdateShifts"/>
                     </div>
                 }
             </div>
@@ -35,7 +35,7 @@
                 @foreach (var eshift in _availableShifts)
                 {
                     <div class="col">
-                        <Shift user_id="user_id" buttonType=@(_canAssign ? "assign" : null) eshift="eshift" ButtonPressed="@UpdateShifts"/>
+                        <ShiftCard user_id="user_id" buttonType=@(_canAssign ? "assign" : null) eshift="eshift" ButtonPressed="@UpdateShifts"/>
                     </div>
                 }
             </div>

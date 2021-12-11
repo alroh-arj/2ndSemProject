@@ -6,7 +6,11 @@
 <div class="card" style="width: 24rem;">
     <div class="card-body">
         <h5 class="card-title">@eshift.shift.title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">@eshift.location.name, @eshift.shift.start.ToString("d", Culture)</h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <span class="oi oi-people"></span> @(eshift.assigned_volunteers.Length)/@(eshift.shift.required_volunteers),
+            @eshift.location.name,
+            @eshift.shift.start.ToString("d", Culture)
+        </h6>
         <p class="card-text">@eshift.shift.description</p>
         <hr />
         <div class="d-flex justify-content-between text-muted">
