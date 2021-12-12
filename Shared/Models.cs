@@ -16,14 +16,14 @@ public class Role
 
 public class UserRole
 {
-    public int id { get; set; }
+    public int? id { get; set; }
     public int user_id { get; set; }
     public int role_id { get; set; }
 }
 
 public class Shift
 {
-    public int id { get; set; }
+    public int? id { get; set; }
     public string title { get; set; }
     public string? description { get; set; }
     public int location_id { get; set; }

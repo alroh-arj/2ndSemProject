@@ -75,6 +75,12 @@ public class UserController : ControllerBase
         if (_user == null)
             return BadRequest("Brugernavnet findes ikke");
         
+        _db.user_roles.RemoveRange(_db.user_roles.Where(ur => ur.user_id == user_id));
+        _db.SaveChanges();
+
+        _db.user_shifts.RemoveRange(_db.user_shifts.Where(ur => ur.user_id == user_id));
+        _db.SaveChanges();
+        
         _db.users.Remove(_user);
         _db.SaveChanges();
         
@@ -150,13 +156,11 @@ public class UserController : ControllerBase
     
     
     [HttpPost("{user_id:int}/roles")]
-    public ActionResult AddRole(int user_id, int role_id)
+    public ActionResult AddRole(int user_id, UserRole user_role)
     {
-        _db.user_roles.Add(new UserRole
-        {
-            role_id = role_id,
-            user_id = user_id
-        });
+        _db.SaveChanges();
+        
+        _db.user_roles.Add(user_role);
         
         _db.SaveChanges();
 

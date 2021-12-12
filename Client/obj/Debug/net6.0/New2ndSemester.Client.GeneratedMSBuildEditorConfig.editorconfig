@@ -46,16 +46,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hpZnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/lasse/Code/2ndSemProject/Client/Pages/SingleShift.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2luZ2xlU2hpZnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/lasse/Code/2ndSemProject/Client/Shared/Header.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0hlYWRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/lasse/Code/2ndSemProject/Client/Shared/ShiftCard.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1NoaWZ0Q2FyZC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/lasse/Code/2ndSemProject/Client/Shared/SurveyPrompt.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/lasse/Code/2ndSemProject/Client/_Imports.razor]

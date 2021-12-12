@@ -2,6 +2,7 @@
 @using New2ndSemester.Client.Services
 @inject IShiftService _shiftService
 @inject HttpClient _http
+@inject NavigationManager _navigationManager
 
 <div class="card" style="width: 24rem;">
     <div class="card-body">
@@ -12,7 +13,6 @@
             @eshift.shift.start.ToString("d", Culture)
         </h6>
         <p class="card-text">@eshift.shift.description</p>
-        <hr />
         <div class="d-flex justify-content-between text-muted">
             <div class="d-flex justify-content-start align-items-center flex-grow-1 text-muted">
                 <div>
@@ -37,9 +37,15 @@
                 else if (buttonType == "unassign")
                 {
                     <button class="btn btn-danger"
-                            disabled=@((DateTime.Now - eshift.shift.start).TotalDays > 2)
+                            disabled=@((DateTime.Now - eshift.shift.start).TotalDays < 2)
                             onclick="@Unassign">
                         Afmeld
+                    </button>
+                } else if (buttonType == "edit")
+                {
+                    <button class="btn btn-primary"
+                            onclick="@GotoShift">
+                        Rediger
                     </button>
                 }
             </div>
@@ -49,20 +55,25 @@
 
 @code {
     [Parameter] public ExtendedShift eshift { get; set; }
-    [Parameter] public int user_id { get; set; }
+    [Parameter] public int? user_id { get; set; }
     [Parameter] public string? buttonType { get; set; }
-    [Parameter] public Action ButtonPressed { get; set; }
+    [Parameter] public Action? ButtonPressed { get; set; }
 
     public static readonly System.Globalization.CultureInfo Culture = new ("da-DK");
 
     public async void Assign()
     {
-        await _shiftService.Assign(user_id, eshift.shift.id);
-        ButtonPressed();
+        await _shiftService.Assign(user_id ?? 0, eshift.shift.id ?? 0);
+        ButtonPressed?.Invoke();
     }
     public async void Unassign()
     {
-        await _shiftService.Unassign(user_id, eshift.shift.id);
-        ButtonPressed();
+        await _shiftService.Unassign(user_id ?? 0, eshift.shift.id ?? 0);
+        ButtonPressed?.Invoke();
+    }
+
+    public async void GotoShift()
+    {
+        _navigationManager.NavigateTo("/shift/"+eshift.shift.id);
     }
 }

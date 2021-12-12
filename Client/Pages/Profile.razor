@@ -23,7 +23,7 @@
             if (_userRoles.Any(ur => ur.name == "Admin"))
             {
                 <button
-                    onclick="@(() => { _userService.RemoveRole(_user.id, 8); GetProfileData(); })"
+                    onclick="@(async () => { await _userService.RemoveRole(_user.id, 8); await GetProfileData(); })"
                     class="btn btn-sm btn-danger mx-1">
                     Fjern som admin
                 </button>
@@ -31,7 +31,10 @@
             else
             {
                 <button
-                    onclick="@(() => { _userService.AddRole(_user.id, 8); GetProfileData(); })"
+                    onclick="@(async () => {
+                        await _userService.AddRole(new UserRole {user_id = _user.id, role_id = 8});
+                        await GetProfileData();
+                    })"
                     class="btn btn-sm btn-primary mx-1">
                     Tilføj som admin
                 </button>   
@@ -42,7 +45,7 @@
             if (_userRoles.Any(ur => ur.name == "Frivilligkoordinator"))
             {
                 <button
-                    onclick="@(() => { _userService.RemoveRole(_user.id, 10); GetProfileData();})"
+                    onclick="@(async () => { await _userService.RemoveRole(_user.id, 10); await GetProfileData();})"
                     class="btn btn-sm btn-danger mx-1">
                     Fjern som frivilligkoordinator
                 </button>
@@ -50,7 +53,10 @@
             else
             {
                 <button
-                    onclick="@(() => { _userService.AddRole(_user.id, 10); GetProfileData(); })"
+                    onclick="@(async () => {
+                        await _userService.AddRole(new UserRole {user_id = _user.id, role_id = 10});
+                        await GetProfileData();
+                    })"
                     class="btn btn-sm btn-primary mx-1">
                     Tilføj som frivilligkoordinator
                 </button>   
@@ -86,10 +92,20 @@
     }
     else
     {
-        <h7>Brugernavn</h7>
-        <p>@_user.username</p>
-        <h7>Fulde navn</h7>
-        <p>@_user.full_name</p>
+        <div class="mb-3">
+            <div class="mb-3">
+                <label class="form-label">Brugernavn</label>
+                <input @bind="_user.username" type="text" class="form-control" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fulde navn</label>
+                <input @bind="_user.full_name" type="text" class="form-control mb-2" readonly>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Kompetencer</label>
+                <textarea @bind="_user.description" class="form-control mb-2" rows="3" readonly></textarea>
+            </div>
+        </div>
     }
 }
 else
@@ -143,7 +159,7 @@ else
     {
         try {
             await _userService.UpdateUser(_user);
-            // _navigationManager.NavigateTo("/");
+            await GetProfileData();
         }
         catch (Exception e)
         {

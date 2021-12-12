@@ -11,6 +11,9 @@ public interface IShiftService
     Task<ExtendedShift[]> GetAllShifts();
     Task Unassign(int user_id, int shift_id);
     Task Assign(int user_id, int shift_id);
+    Task<ExtendedShift> SetShift(Shift shift);
+    Task<ExtendedShift?> GetShift(int shift_id);
+    Task<Location[]> GetAllLocations();
 
     // Task<UserShift[]> GetUserShifts(int user_id);
     // Task<UserShift[]> GetAllUserShifts();
@@ -41,6 +44,25 @@ public class ShiftService : IShiftService
     {
         await _http.DeleteAsync("api/shift/"+shift_id+"/"+user_id);
     }
+    
+    public async Task<ExtendedShift> SetShift(Shift shift)
+    {
+        var response = await _http.PostAsJsonAsync("api/shift/", shift);
+        
+        return await response.Content.ReadFromJsonAsync<ExtendedShift>();
+    }
+    
+    public async Task<ExtendedShift?> GetShift(int shift_id)
+    {
+        return await _http.GetFromJsonAsync<ExtendedShift?>("api/shift/"+shift_id);
+    }
+
+    public async Task<Location[]> GetAllLocations()
+    {
+        return await _http.GetFromJsonAsync<Location[]?>("api/location/all") ?? new Location[]{};
+    }
+    
+    
     // public async Task<UserShift[]> GetUserShifts(int user_id)
     // {
     //     return await _http.GetFromJsonAsync<UserShift[]>("api/user_shift/"+user_id) ?? new UserShift[] {};

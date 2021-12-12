@@ -18,7 +18,7 @@ public interface IUserService
     Task<Role[]> GetUserRoles(int user_id);
     Task DeleteUser(int user_id);
     Task UpdateUser(User user);
-    Task AddRole(int user_id, int role_id);
+    Task AddRole(UserRole user_role);
     Task RemoveRole(int user_id, int role_id);
 }
 
@@ -113,9 +113,9 @@ public class UserService : IUserService
         }
     }
 
-    public async Task AddRole(int user_id, int role_id)
+    public async Task AddRole(UserRole user_role)
     {
-        await _http.PostAsJsonAsync("api/user/"+user_id+"/roles", role_id);
+        await _http.PostAsJsonAsync("api/user/"+user_role.user_id+"/roles", user_role);
     }
     
     public async Task RemoveRole(int user_id, int role_id)

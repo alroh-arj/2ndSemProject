@@ -20,7 +20,7 @@
             <div class="row row-cols-auto">
                 @foreach (var eshift in _userShifts)
                 {
-                    <div class="col">
+                    <div class="col py-2">
                         <ShiftCard user_id="user_id" buttonType=@(_canUnassign ? "unassign" : null) eshift="eshift" ButtonPressed="@UpdateShifts"/>
                     </div>
                 }
@@ -30,11 +30,11 @@
     <p>
         @if (_availableShifts.Count > 0)
         {
-            <h3 class="mb-3">Tilgængelige vagter</h3>
+            <h3 class="mb-3">Tilmeld ny vagt</h3>
             <div class="row row-cols-auto">
                 @foreach (var eshift in _availableShifts)
                 {
-                    <div class="col">
+                    <div class="col py-2">
                         <ShiftCard user_id="user_id" buttonType=@(_canAssign ? "assign" : null) eshift="eshift" ButtonPressed="@UpdateShifts"/>
                     </div>
                 }

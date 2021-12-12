@@ -17,7 +17,7 @@
         @if (_sessionUser == null)
         {
             <div class="nav-item">
-                <NavLink class="nav-link" href="login" Match="NavLinkMatch.All">
+                <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
                     <span class="oi oi-account-login" aria-hidden="true"></span> Log ind
                 </NavLink>
             </div>
@@ -83,23 +83,18 @@
     protected override async void OnInitialized()
     {
         base.OnInitialized();
-        _navigationManager.LocationChanged += LocationChanged;
+        _navigationManager.LocationChanged += (object _, LocationChangedEventArgs _) => UpdateSidebar();
         UpdateSidebar();
     }
 
     private async void UpdateSidebar()
     {
         _sessionUser = await _userService.GetSessionUser();
-        if (_sessionUser != null)
-        {
+        if (_sessionUser != null){
             _canAdministrateShifts = await _userService.SessionUserHasRole("Admin") ||
-                                await _userService.SessionUserHasRole("Frivilligkoordinator");
+                                     await _userService.SessionUserHasRole("Frivilligkoordinator");
         }
+
         StateHasChanged();
-    }
-    
-    void LocationChanged(object sender, LocationChangedEventArgs e)
-    {
-        UpdateSidebar();
     }
 }
