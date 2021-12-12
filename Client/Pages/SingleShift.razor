@@ -22,7 +22,21 @@
                 <input @bind="eshift.shift.required_volunteers" type="number" style="width: 120px" min="0" id="typeNumber" class="form-control"/>
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlSelect1">Lokalitet</label>
+                <label class="form-label">Starttidspunkt</label>
+                <div>
+                    <input @bind="eshift.shift.start" type="datetime-local" id="meeting-time" name="meeting-time"
+                           pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}">
+                </div>
+                </div>
+            <div class="mb-3">
+                <label class="form-label">Sluttidspunkt</label>
+                <div>
+                    <input @bind="eshift.shift.stop" type="datetime-local" id="meeting-time" name="meeting-time"
+                           pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="exampleFormControlSelect1">Lokalitet</label>
                 <select @bind="eshift.shift.location_id" class="form-control" id="exampleFormControlSelect1">
                     @foreach (var location in locations)
                     {
@@ -57,6 +71,7 @@
     private async void UpdateShift()
     {
         eshift = await _shiftService.SetShift(eshift.shift);
+        _navigationManager.NavigateTo("/administrate_shifts");
     }
 
     private async void DeleteShift()
