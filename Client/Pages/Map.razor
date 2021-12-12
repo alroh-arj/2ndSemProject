@@ -1,0 +1,34 @@
+@page "/map"
+@using New2ndSemester.Shared
+@using New2ndSemester.Client.Services
+@inject IShiftService _shiftService
+<h1>Kort</h1>
+
+<div class="map-container">
+    <img src="map.png" />
+    <div class="overlay">
+        @if (locations != null)
+        {
+            @foreach (var location in locations)
+            {
+                <span
+                    class="oi oi-map-marker map-marker"
+                    style="left: calc(@(location.x)px - 0.35em); top: calc(@(location.y)px - 1em);"
+                >
+                    
+                </span>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    private Location[]? locations;
+
+    protected override async void OnInitialized()
+    {
+        locations = await _shiftService.GetAllLocations();
+        StateHasChanged();
+    }
+
+}

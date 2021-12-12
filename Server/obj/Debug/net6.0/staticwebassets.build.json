@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/CQYrhoi18+IVRlp0YXP0Nva7XfTWVmImSWYdBi3s4c=",
+  "Hash": "bzeOi4Ypf/HjLTlO254qDao0wbol5pAeet6fFgvE4fE=",
   "Source": "New2ndSemester.Server",
   "BasePath": "_content/New2ndSemester.Server",
   "Mode": "Default",
@@ -7184,6 +7184,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/home/lasse/Code/2ndSemProject/Client/wwwroot/map.png",
+      "SourceId": "New2ndSemester.Client",
+      "SourceType": "Project",
+      "ContentRoot": "/home/lasse/Code/2ndSemProject/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "map.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/map.png"
     }
   ]
 }

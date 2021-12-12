@@ -1652,3 +1652,4 @@
 /home/lasse/Code/2ndSemProject/Client/obj/Debug/net6.0/New2ndSemester.Client.dll
 /home/lasse/Code/2ndSemProject/Client/obj/Debug/net6.0/ref/New2ndSemester.Client.dll
 /home/lasse/Code/2ndSemProject/Client/obj/Debug/net6.0/New2ndSemester.Client.pdb
+/home/lasse/Code/2ndSemProject/Client/obj/Debug/net6.0/scopedcss/Pages/Map.razor.rz.scp.css
