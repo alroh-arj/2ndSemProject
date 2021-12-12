@@ -3,6 +3,7 @@
 @using New2ndSemester.Client.Services
 @inject IShiftService _shiftService
 @inject IUserService _userService
+@inject NavigationManager _navigationManager
 
 @if (eshift != null)
 {
@@ -17,8 +18,8 @@
                 <textarea @bind="eshift.shift.description" class="form-control mb-2" rows="3"></textarea>
             </div>
             <div class="mb-3">
-                <label class="form-label">Antal Frivillige: @eshift.shift.required_volunteers</label>
-                <input @bind="eshift.shift.required_volunteers" type="range" class="form-range" min="0" max="32" step="1" id="customRange3">
+                <label class="form-label">Antal Frivillige</label>
+                <input @bind="eshift.shift.required_volunteers" type="number" style="width: 120px" min="0" id="typeNumber" class="form-control"/>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlSelect1">Lokalitet</label>
@@ -30,7 +31,7 @@
                 </select>
             </div>
             <div class="d-flex justify-content-center gap-2">
-                <button class="btn btn-danger">Slet vagt</button>
+                <button @onclick="DeleteShift" class="btn btn-danger">Slet vagt</button>
                 <button @onclick="UpdateShift" class="btn btn-primary">Gem vagt</button>
             </div>
         </div>
@@ -52,9 +53,15 @@
         locations = await _shiftService.GetAllLocations();
         StateHasChanged();
     }
-
+    
     private async void UpdateShift()
     {
         eshift = await _shiftService.SetShift(eshift.shift);
+    }
+
+    private async void DeleteShift()
+    {
+        await _shiftService.DeleteShift(eshift.shift.id ?? 0);
+        _navigationManager.NavigateTo("/administrate_shifts");
     }
 }

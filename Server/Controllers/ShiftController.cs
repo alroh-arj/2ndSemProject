@@ -150,6 +150,29 @@ public class ShiftController : Controller
         return query.ToArray();
     }
     
+    [HttpDelete("shift/{shift_id:int}")]
+    public ActionResult Delete(int shift_id)
+    {
+        // check database for user
+        var query = from shift in _db.shifts
+            where shift.id == shift_id
+            select shift;
+
+
+        var _shift = query.FirstOrDefault<Shift>();
+        
+        if (_shift == null)
+            return BadRequest("Denne vagten findes ikke");
+
+        _db.user_shifts.RemoveRange(_db.user_shifts.Where(ur => ur.shift_id == shift_id));
+        _db.SaveChanges();
+        
+        _db.shifts.Remove(_shift);
+        _db.SaveChanges();
+        
+        return Ok();
+    }
+    
     // [HttpPost("shift/{shift_id:int}")]
     // public ActionResult<Shift> Create(int shift_id, Shift shift)
     // {
