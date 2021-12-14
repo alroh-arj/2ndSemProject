@@ -35,16 +35,16 @@ else
                     <td>@user.username</td>
                     <td>@user.full_name</td>
                     <td>
-                        @if (@user.description != null)
+                        @if (user.description == null || user.description.Trim() == "")
+                        {
+                            <span class="me-2 badge text-white rounded-pill" style="background-color: #aaa;">Ikke angivet</span>
+                        }
+                        else
                         {
                             @foreach (var skill in @user.description.Split(","))
                             {
                                 <span class="me-2 badge rounded-pill bg-primary">@skill.Trim()</span>
                             }
-                        }
-                        else
-                        {
-                            <span class="me-2 badge text-white rounded-pill" style="background-color: #aaa;">Ikke angivet</span>
                         }
                     </td>
                 </tr>
