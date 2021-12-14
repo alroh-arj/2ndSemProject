@@ -14,18 +14,19 @@
                 @foreach (var location in locations)
                 {
                     <span class="oi oi-map-marker map-marker"
-                         onmouseover="@(() => {selectedLocationId = location.id; StateHasChanged();})"
+                          onmouseover="@(() => {selectedLocationId = location.id; StateHasChanged();})"
                           style="font-size: @(selectedLocationId == location.id ? "2rem" : "1.4rem"); left: calc(@(location.x * 500)px - 0.35em);top: calc(@(location.y * 500)px - 1em);"></span>
                 }
             }
         </div>
     </div>
-    <div class="">
+    <div class="container">
+    <div class="row row-cols-2">
         @if (locations != null)
         {
             @foreach (var location in locations)
             {
-                <div class="card my-3 mx-3 @(selectedLocationId == location.id ? "border-3 my-1" : "border-1")"
+                <div class="card col my-2 mx-2 @(selectedLocationId == location.id ? "border-3 my-1" : "border-1")"
                      style="width: 18rem;"
                      onmouseover="@(() => {selectedLocationId = location.id; StateHasChanged();})">
                     <div class="card-body">
@@ -35,6 +36,7 @@
                 </div>
             }
         }
+    </div>
     </div>
 </div>
 

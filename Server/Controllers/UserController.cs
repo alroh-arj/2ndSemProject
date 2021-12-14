@@ -17,7 +17,7 @@ public class UserController : ControllerBase
         _db = db;
     }
 
-    [HttpPost("login")]
+    [HttpPost("login")] //api/user/login
     public ActionResult<User> Login(User loginUser)
     {
 
