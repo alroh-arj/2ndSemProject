@@ -75,8 +75,8 @@
                 <input @bind="_user.full_name" type="text" class="form-control mb-2">
             </div>
             <div class="mb-3">
-                <label class="form-label">Kompetencer</label>
-                <textarea @bind="_user.description" class="form-control mb-2" rows="3"></textarea>
+                <label class="form-label">Kompetencer (komma sepereret)</label>
+                <input @bind="_user.description" type="text" class="form-control mb-2">
             </div>
             <button class="btn btn-primary btn-block" @onclick="UpdateUser">Opdater</button>
         </div>

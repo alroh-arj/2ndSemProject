@@ -1,22 +1,38 @@
+@page "/map/{selectedLocationId:int}"
 @page "/map"
 @using New2ndSemester.Shared
 @using New2ndSemester.Client.Services
 @inject IShiftService _shiftService
 <h1>Kort</h1>
 
-<div class="map-container">
-    <img src="map.png" />
-    <div class="overlay">
+<div class="d-flex">
+    <div class="map-container">
+        <img src="map.png" />
+        <div class="overlay">
+            @if (locations != null)
+            {
+                @foreach (var location in locations)
+                {
+                    <span class="oi oi-map-marker map-marker"
+                         onmouseover="@(() => {selectedLocationId = location.id; StateHasChanged();})"
+                          style="font-size: @(selectedLocationId == location.id ? "2rem" : "1.4rem"); left: calc(@(location.x * 500)px - 0.35em);top: calc(@(location.y * 500)px - 1em);"></span>
+                }
+            }
+        </div>
+    </div>
+    <div class="">
         @if (locations != null)
         {
             @foreach (var location in locations)
             {
-                <span
-                    class="oi oi-map-marker map-marker"
-                    style="left: calc(@(location.x)px - 0.35em); top: calc(@(location.y)px - 1em);"
-                >
-                    
-                </span>
+                <div class="card my-3 mx-3 @(selectedLocationId == location.id ? "border-3 my-1" : "border-1")"
+                     style="width: 18rem;"
+                     onmouseover="@(() => {selectedLocationId = location.id; StateHasChanged();})">
+                    <div class="card-body">
+                        <h5 class="card-title">@location.name</h5>
+                        <p class="card-text text-muted">@location.description</p>
+                    </div>
+                </div>
             }
         }
     </div>
@@ -24,6 +40,7 @@
 
 @code {
     private Location[]? locations;
+    [Parameter] public int? selectedLocationId { get; set; } 
 
     protected override async void OnInitialized()
     {

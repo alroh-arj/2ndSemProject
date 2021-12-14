@@ -3,6 +3,7 @@
 @using New2ndSemester.Client.Services
 @inject IUserService _userService
 @inject HttpClient _http
+@inject NavigationManager _navigationManager
 
 <PageTitle>Alle medarbejdere</PageTitle>
 
@@ -17,25 +18,46 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>Brugernavn</th>
                 <th>Fulde navn</th>
-                <th>Profil</th>
-                <th>Vagter</th>
+                <th>Kompetencer</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var user in _users)
             {
                 <tr>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick=@(() => _navigationManager.NavigateTo("/"+user.id+"/profile"))>Profil</button>
+                        <button class="btn btn-sm btn-primary" onclick=@(() => _navigationManager.NavigateTo("/"+user.id+"/shifts"))>Vagter</button>
+                    </td>
                     <td>@user.username</td>
                     <td>@user.full_name</td>
-                    <td><a href=@("/"+user.id+"/profile")>link</a></td>
-                    <td><a href=@("/"+user.id+"/shifts")>link</a></td>
+                    <td>
+                        @if (@user.description != null)
+                        {
+                            @foreach (var skill in @user.description.Split(","))
+                            {
+                                <span class="me-2 badge rounded-pill bg-primary">@skill.Trim()</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="me-2 badge text-white rounded-pill" style="background-color: #aaa;">Ikke angivet</span>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
+
+<style>
+    tr > td:first-of-type {
+        width: 155px;
+    }
+</style>
 
 @code {
 
