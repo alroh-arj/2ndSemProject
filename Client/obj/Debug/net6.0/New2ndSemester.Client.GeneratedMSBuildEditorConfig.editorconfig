@@ -11,65 +11,69 @@ build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = New2ndSemester.Client
 build_property.RootNamespace = New2ndSemester.Client
-build_property.ProjectDir = /home/lasse/Code/2ndSemProject/Client/
+build_property.ProjectDir = /home/lassehbomholt/Code/2ndSemProject/Client/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/lasse/Code/2ndSemProject/Client
+build_property.MSBuildProjectDirectory = /home/lassehbomholt/Code/2ndSemProject/Client
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/lasse/Code/2ndSemProject/Client/App.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Pages/AdministrateShifts.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/AdministrateShifts.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW5pc3RyYXRlU2hpZnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Pages/Coworkers.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/Coworkers.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ293b3JrZXJzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Pages/Login.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Pages/Profile.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/Logs.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9ncy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZmlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Pages/Register.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Pages/Shifts.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/Shifts.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hpZnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Pages/SingleShift.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/SingleShift.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2luZ2xlU2hpZnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Shared/Header.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Shared/Header.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0hlYWRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Shared/ShiftCard.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Shared/ShiftCard.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1NoaWZ0Q2FyZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/_Imports.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lasse/Code/2ndSemProject/Client/Pages/Map.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Pages/Map.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWFwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-k76l9bvntk
 
-[/home/lasse/Code/2ndSemProject/Client/Shared/MainLayout.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-ktk32dqewf
 
-[/home/lasse/Code/2ndSemProject/Client/Shared/NavMenu.razor]
+[/home/lassehbomholt/Code/2ndSemProject/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-4l3o5vx7ox

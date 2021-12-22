@@ -7,7 +7,7 @@ using New2ndSemester.Shared;
 namespace New2ndSemester.Client.Services;
 public interface IUserService
 {
-    void Initialize(ILocalStorageService localStorageService, HttpClient http);
+    void Initialize(ILocalStorageService localStorageService, ILogService logService, HttpClient http);
     Task<User?> GetSessionUser();
     Task SetSessionUser(User user);
     Task RemoveSessionUser();
@@ -26,14 +26,11 @@ public class UserService : IUserService
 {
     private ILocalStorageService _localStorageService;
     private HttpClient _http;
-    // public event EventHandler<User?> _onUserChanged;
-    
-    // public void OnUserChanged(Delegate callback)
-    // {
-    //     _onUserChanged += callback;
-    // }
-    public void Initialize(ILocalStorageService localStorageService, HttpClient http)
+    private ILogService _logService;
+
+    public void Initialize(ILocalStorageService localStorageService, ILogService logService, HttpClient http)
     {
+        _logService = logService;
         _localStorageService = localStorageService;
         _http = http;
     }

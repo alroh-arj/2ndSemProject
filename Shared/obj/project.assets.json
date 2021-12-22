@@ -48,19 +48,19 @@
     ]
   },
   "packageFolders": {
-    "/home/lasse/.nuget/packages/": {}
+    "/home/lassehbomholt/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/lasse/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
+      "projectUniqueName": "/home/lassehbomholt/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
       "projectName": "New2ndSemester.Shared",
-      "projectPath": "/home/lasse/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
-      "packagesPath": "/home/lasse/.nuget/packages/",
-      "outputPath": "/home/lasse/Code/2ndSemProject/Shared/obj/",
+      "projectPath": "/home/lassehbomholt/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
+      "packagesPath": "/home/lassehbomholt/.nuget/packages/",
+      "outputPath": "/home/lassehbomholt/Code/2ndSemProject/Shared/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/lasse/.nuget/NuGet/NuGet.Config"
+        "/home/lassehbomholt/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -104,7 +104,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

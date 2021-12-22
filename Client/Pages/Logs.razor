@@ -1,0 +1,69 @@
+@page "/logs"
+@using New2ndSemester.Client.Services
+@using New2ndSemester.Shared
+@inject ILogService _logService
+@inject NavigationManager _navigationManager
+@inject IUserService _userService
+@inject HttpClient _http
+
+<h1>Logs</h1>
+
+@if (_logs != null && _users != null)
+{
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Brugernavn</th>
+            <th>Tabel</th>
+            <th>Handling</th>
+            <th>Tidspunkt</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var log in _logs)
+        {
+            <tr>
+                <td>
+                    <button class="btn btn-sm btn-primary" onclick=@(() => _navigationManager.NavigateTo("/"+log.by_user_id+"/profile"))>Profil</button>
+                </td>
+                <td></td>
+                @* <td>@_users.First(user => user.id == log.by_user_id).username</td> *@
+                <td>@log.tabname</td>
+                <td>@log.operation</td>
+                <td>@log.tstamp.ToString("g")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+<style>
+    tr > td:first-of-type {
+        width: 80px;
+    }
+    
+    tr > td:nth-of-type(2) {
+        width: 200px;
+    }
+</style>
+
+@code {
+    private Log[]? _logs;
+    private User[]? _users;
+
+
+    protected override async void OnInitialized()
+    {
+        _logs = await _logService.GetAllLogs();
+        _users = await _http.GetFromJsonAsync<User[]>("api/user/all") ?? new User []{};;
+
+        StateHasChanged();
+    }
+
+}

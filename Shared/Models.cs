@@ -1,3 +1,5 @@
+using System.Text.Json.Nodes;
+
 namespace New2ndSemester.Shared;
 public class User
 {
@@ -53,4 +55,17 @@ public class Location
     public string? description { get; set; }
     public double x { get; set; }
     public double y { get; set; }
+}
+
+public class Log
+{
+    public int id { get; set; }
+    public DateTime tstamp { get; set; }
+    public string schemaname { get; set; }    
+    public string tabname { get; set; }    
+    public string operation { get; set; }    
+    public string? who { get; set; }    
+    public string? old_val { get; set; }
+    public string? new_val { get; set; }
+    public int? by_user_id { get; set; }
 }

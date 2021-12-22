@@ -11,6 +11,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IShiftService, ShiftService>();
+builder.Services.AddScoped<ILogService, LogService>();
 
 var app = builder.Build();
 
@@ -19,8 +20,10 @@ var http = app.Services.GetRequiredService<HttpClient>();
 
 var userService = app.Services.GetRequiredService<IUserService>();
 var shiftService = app.Services.GetRequiredService<IShiftService>();
+var logService = app.Services.GetRequiredService<ILogService>();
 
-userService.Initialize(localStorageService, http);
-shiftService.Initialize(localStorageService, http);
+userService.Initialize(localStorageService, logService, http);
+shiftService.Initialize(localStorageService, logService, http);
+logService.Initialize(http, userService);
 
 await app.RunAsync();

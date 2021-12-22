@@ -30,7 +30,7 @@
    
     protected override async void OnAfterRender(bool firstRender)
     {
-        if (firstRender == true)
+        if (firstRender)
         {
             var user = await _userService.GetSessionUser();
 

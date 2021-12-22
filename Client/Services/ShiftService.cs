@@ -7,7 +7,7 @@ using New2ndSemester.Shared;
 namespace New2ndSemester.Client.Services;
 public interface IShiftService
 {
-    void Initialize(ILocalStorageService localStorageService, HttpClient http);
+    void Initialize(ILocalStorageService localStorageService, ILogService logService, HttpClient http);
     Task<ExtendedShift[]> GetAllShifts();
     Task Unassign(int user_id, int shift_id);
     Task Assign(int user_id, int shift_id);
@@ -24,9 +24,11 @@ public class ShiftService : IShiftService
 {
     private ILocalStorageService _localStorageService;
     private HttpClient _http;
+    private ILogService _logService;
 
-    public void Initialize(ILocalStorageService localStorageService, HttpClient http)
+    public void Initialize(ILocalStorageService localStorageService, ILogService logService, HttpClient http)
     {
+        _logService = logService;
         _localStorageService = localStorageService;
         _http = http;
     }
@@ -49,7 +51,7 @@ public class ShiftService : IShiftService
     public async Task<ExtendedShift> SetShift(Shift shift)
     {
         var response = await _http.PostAsJsonAsync("api/shift/", shift);
-        
+        await _logService.AuthenticateRecentLog();
         return await response.Content.ReadFromJsonAsync<ExtendedShift>();
     }
     

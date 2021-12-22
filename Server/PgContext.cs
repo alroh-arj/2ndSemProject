@@ -13,6 +13,7 @@ public class PgContext : DbContext
     public virtual DbSet<Shift> shifts { get; set; }
     public virtual DbSet<UserShift> user_shifts { get; set; }
     public virtual DbSet<Location> locations { get; set; }
+    public virtual DbSet<Log> logs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

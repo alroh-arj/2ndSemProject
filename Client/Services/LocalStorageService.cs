@@ -31,7 +31,11 @@ public class LocalStorageService : ILocalStorageService
 
     public async Task SetItem<T>(string key, T value)
     {
-        await _jsRuntime.InvokeVoidAsync("localStorage.setItem", key, JsonSerializer.Serialize(value));
+        await _jsRuntime.InvokeVoidAsync(
+            "localStorage.setItem", 
+            key,
+            JsonSerializer.Serialize(value)
+        );
     }
 
     public async Task RemoveItem(string key)
