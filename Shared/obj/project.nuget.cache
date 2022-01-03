@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RHe5VAr541Hp1F+0feRIARzlUno4cpSJGLx05ouQM+OhHgKwHqREHc+iigmWYzDC+wyHN7xnU9Tkd5AkmZM4lw==",
+  "dgSpecHash": "fw+5NZ0dwD2hYw2Yb+e+pGLjmXsAVXO/iF3uTNBI2UzgLBYgu6Bu1hF9QPQqgqi/r+Nni5PVI7vk9bkhY8vOCg==",
   "success": true,
-  "projectFilePath": "/home/lassehbomholt/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
+  "projectFilePath": "/home/lassehbomholt/Code/AndetSemProjekt/Shared/New2ndSemester.Shared.csproj",
   "expectedPackageFiles": [
     "/home/lassehbomholt/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
   ],

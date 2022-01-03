@@ -34,3 +34,15 @@
 /home/lassehbomholt/Code/2ndSemProject/Shared/obj/Debug/net6.0/New2ndSemester.Shared.dll
 /home/lassehbomholt/Code/2ndSemProject/Shared/obj/Debug/net6.0/ref/New2ndSemester.Shared.dll
 /home/lassehbomholt/Code/2ndSemProject/Shared/obj/Debug/net6.0/New2ndSemester.Shared.pdb
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/bin/Debug/net6.0/New2ndSemester.Shared.deps.json
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/bin/Debug/net6.0/New2ndSemester.Shared.dll
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/bin/Debug/net6.0/ref/New2ndSemester.Shared.dll
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/bin/Debug/net6.0/New2ndSemester.Shared.pdb
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/Debug/net6.0/New2ndSemester.Shared.csproj.AssemblyReference.cache
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/Debug/net6.0/New2ndSemester.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/Debug/net6.0/New2ndSemester.Shared.AssemblyInfoInputs.cache
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/Debug/net6.0/New2ndSemester.Shared.AssemblyInfo.cs
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/Debug/net6.0/New2ndSemester.Shared.csproj.CoreCompileInputs.cache
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/Debug/net6.0/New2ndSemester.Shared.dll
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/Debug/net6.0/ref/New2ndSemester.Shared.dll
+/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/Debug/net6.0/New2ndSemester.Shared.pdb

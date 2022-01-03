@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/lassehbomholt/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
+      "projectUniqueName": "/home/lassehbomholt/Code/AndetSemProjekt/Shared/New2ndSemester.Shared.csproj",
       "projectName": "New2ndSemester.Shared",
-      "projectPath": "/home/lassehbomholt/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj",
+      "projectPath": "/home/lassehbomholt/Code/AndetSemProjekt/Shared/New2ndSemester.Shared.csproj",
       "packagesPath": "/home/lassehbomholt/.nuget/packages/",
-      "outputPath": "/home/lassehbomholt/Code/2ndSemProject/Shared/obj/",
+      "outputPath": "/home/lassehbomholt/Code/AndetSemProjekt/Shared/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/lassehbomholt/.nuget/NuGet/NuGet.Config"

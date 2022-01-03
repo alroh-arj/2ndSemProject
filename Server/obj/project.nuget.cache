@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c5jP1FxfhjMYKqtCknAJxOZKmYxLRPvmOvyvU+bthLMl2+l+wrah9MS5LhA242kpGqwV5MicpltowuJip51MCg==",
+  "dgSpecHash": "RsSvPPWEJBEyLgwt3o4nPyk2Gk1knZj/qRWz2Z49o4Q8D/8Yk7VuchiceuGdb4D6qqpRqpx3tPdkfcYBUFhjLA==",
   "success": true,
-  "projectFilePath": "/home/lassehbomholt/Code/2ndSemProject/Server/New2ndSemester.Server.csproj",
+  "projectFilePath": "/home/lassehbomholt/Code/AndetSemProjekt/Server/New2ndSemester.Server.csproj",
   "expectedPackageFiles": [
     "/home/lassehbomholt/.nuget/packages/bcrypt.net-next/4.0.2/bcrypt.net-next.4.0.2.nupkg.sha512",
     "/home/lassehbomholt/.nuget/packages/microsoft.aspnetcore.authorization/6.0.0/microsoft.aspnetcore.authorization.6.0.0.nupkg.sha512",

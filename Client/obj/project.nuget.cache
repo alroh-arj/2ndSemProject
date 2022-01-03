@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KdLzV/41jHZTDShPZMpIaFbkAbaJxyx5LimeGHIaiX+2VKcgHsJOhMFIcffbb2zTwvnRCcHKbw6kroT9YMWnzg==",
+  "dgSpecHash": "HUn6PHc1qzK2m4K34eWjgJgotFDTIQYws0Wnz9Rc2n26ZK6bnwTjcrG8YkfzZAhg5FzeW1qJv6f6N+lVfiqBiw==",
   "success": true,
-  "projectFilePath": "/home/lassehbomholt/Code/2ndSemProject/Client/New2ndSemester.Client.csproj",
+  "projectFilePath": "/home/lassehbomholt/Code/AndetSemProjekt/Client/New2ndSemester.Client.csproj",
   "expectedPackageFiles": [
     "/home/lassehbomholt/.nuget/packages/microsoft.aspnetcore.authorization/6.0.0/microsoft.aspnetcore.authorization.6.0.0.nupkg.sha512",
     "/home/lassehbomholt/.nuget/packages/microsoft.aspnetcore.components/6.0.0/microsoft.aspnetcore.components.6.0.0.nupkg.sha512",

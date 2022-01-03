@@ -1629,11 +1629,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/lassehbomholt/Code/2ndSemProject/Client/New2ndSemester.Client.csproj",
+      "projectUniqueName": "/home/lassehbomholt/Code/AndetSemProjekt/Client/New2ndSemester.Client.csproj",
       "projectName": "New2ndSemester.Client",
-      "projectPath": "/home/lassehbomholt/Code/2ndSemProject/Client/New2ndSemester.Client.csproj",
+      "projectPath": "/home/lassehbomholt/Code/AndetSemProjekt/Client/New2ndSemester.Client.csproj",
       "packagesPath": "/home/lassehbomholt/.nuget/packages/",
-      "outputPath": "/home/lassehbomholt/Code/2ndSemProject/Client/obj/",
+      "outputPath": "/home/lassehbomholt/Code/AndetSemProjekt/Client/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/lassehbomholt/.nuget/NuGet/NuGet.Config"
@@ -1648,8 +1648,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/home/lassehbomholt/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj": {
-              "projectPath": "/home/lassehbomholt/Code/2ndSemProject/Shared/New2ndSemester.Shared.csproj"
+            "/home/lassehbomholt/Code/AndetSemProjekt/Shared/New2ndSemester.Shared.csproj": {
+              "projectPath": "/home/lassehbomholt/Code/AndetSemProjekt/Shared/New2ndSemester.Shared.csproj"
             }
           }
         }
